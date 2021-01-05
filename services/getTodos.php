@@ -4,9 +4,9 @@ require_once('lib/common_service.php');
 require_once('lib/initDataLayer.php');
 
 try {
-    $communes = $data->getSalut();
+    $todos = $data->getTodos();
 
-    produceResult($communes);
+    produceResult($todos);
 }
 catch (PDOException $e){
     produceError($e->getMessage());

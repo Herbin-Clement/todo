@@ -14,11 +14,19 @@ class DataLayer {
         
     }
 
-    function getSalut(): array {
+    function getTodo(): array {
         $sql = "select * from todo.todo";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        $res=$stmt->fetchAll();
+        $res = $stmt->fetchAll();
+        return $res;
+    }
+
+    function getTodos(): array {
+        $sql = "select * from todo.todos";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $res = $stmt->fetchAll();
         return $res;
     }
 }
