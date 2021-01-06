@@ -1,11 +1,11 @@
-function getSalut() {
+function getTodo() {
 
     fetchFromJson('services/getTodo.php')
-    .then(displayTodos);
+    .then(displayTodoList);
 }
 
 
-const createTodoItem = (todoData) => {
+const createTodo = (todoData) => {
     let todoItem = document.createElement('div');
     todoItem.classList.add("todoItem");
 
@@ -21,15 +21,38 @@ const createTodoItem = (todoData) => {
     return todoItem;
 } 
 
-const displayTodos = (todosData) => {
+const displayTodoTitle = (todoTitle) => {
+    const Currenttitle = document.querySelector('.todoTitle');
+    todoTitle.textContent = todoTitle;
+}
+
+const displayTodoList = (todoListData) => {
+    displayTodoTitle(todoListData.result[0].todosName);
     const todoList = document.querySelector('.todoList');
-    todosData.result.forEach((todoItem) => {
-        const todo = createTodoItem(todoItem);
+    todoListData.result.forEach((todoItem) => {
+        const todo = createTodo(todoItem);
         todoList.append(todo);
     });
 }
 
-console.log('bite');
+function getTodoTitle() {
+    fetchFromJson('services/getTodoTitles.php')
+    .then(displayTodoTitles);
+}
+
+const createTodoTitle = (todoTitleData) => {
+    let todosTitle = document.createElement('div');
+    todosTitle.textContent = todoTitleData.todosName;
+    return todosTitle;
+} 
+
+const displayTodoTitles = (todoTitlesData) => {
+    const sideBarTodoTitle = document.querySelector('.sideBarTodoTitle');
+    todoTitlesData.result.forEach((todoTitle) => {
+        const title = createTodoTitle(todoTitle);
+        sideBarTodoTitle.append(title);
+    });
+}
 
 "use strict";
   /*
@@ -71,4 +94,5 @@ function formDataToQueryString (fd){
 }
 
 
-getSalut();
+getTodo();
+getTodoTitle();

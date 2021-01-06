@@ -15,14 +15,14 @@ class DataLayer {
     }
 
     function getTodo(): array {
-        $sql = "select * from todo.todo";
+        $sql = "select * from todo.todo left join todo.todos on todo.todos.todosId=todo.todo.todosId";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $res = $stmt->fetchAll();
         return $res;
     }
 
-    function getTodos(): array {
+    function getTodoTitles(): array {
         $sql = "select * from todo.todos";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();

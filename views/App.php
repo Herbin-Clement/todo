@@ -22,8 +22,6 @@
                 <div class="sideBarTool">
                     <div class="sideBarSubTitle">Todos</div>
                     <div class="sideBarTodoTitle">
-                        <div>Aujourd'hui</div>
-                        <div>Demain</div>
                     </div>
                 </div>
             </div>
@@ -33,7 +31,7 @@
 
             </div>
             <div class="todoApp">
-                <div class="todoTitle">Todo list d'aujourd'hui</div>
+                <div class="todoTitle"></div>
                 <div class="todoList">
                 </div>
             </div>

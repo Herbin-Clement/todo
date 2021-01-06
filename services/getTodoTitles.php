@@ -4,9 +4,9 @@ require_once('lib/common_service.php');
 require_once('lib/initDataLayer.php');
 
 try {
-    $todos = $data->getTodos();
+    $todoTitle = $data->getTodoTitles();
 
-    produceResult($todos);
+    produceResult($todoTitle);
 }
 catch (PDOException $e){
     produceError($e->getMessage());
