@@ -29,4 +29,14 @@ class DataLayer {
         $res = $stmt->fetchAll();
         return $res;
     }
+
+    function updateCheck(int $todoId): ?array {
+        // IF(an_int_value=1, 0, 1)
+        // $sql = "update todo.todo set todo.todo.isCheck=!todo.todo.isCheck where todo.todo.todoId=:todoId";
+        $sql = "update todo.todo set todo.todo.isCheck=IF(todo.todo.isCheck=1, 0, 1) where todo.todo.todoId=:todoId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindvalue(":todoId", $todoId);
+        $stmt->execute();
+        return [];
+    }
 }

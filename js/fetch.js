@@ -6,12 +6,14 @@ function getTodo() {
 
 
 const createTodo = (todoData) => {
+    console.log(todoData);
     let todoItem = document.createElement('div');
     todoItem.classList.add("todoItem");
+    todoItem.setAttribute('id', todoData.todoId);
 
     let todoText = document.createElement('div');
     todoText.classList.add("todoText");
-    if (todoData.isCheck == 0) {
+    if (todoData.isCheck == 1) {
         todoText.classList.add("isDo");
     } else {
         todoText.classList.add("isNotDo");
@@ -23,8 +25,8 @@ const createTodo = (todoData) => {
 } 
 
 const displayTodoTitle = (todoTitle) => {
-    const Currenttitle = document.querySelector('.todoTitle');
-    todoTitle.textContent = todoTitle;
+    const CurrentTitle = document.querySelector('.todoTitle');
+    CurrentTitle.textContent = todoTitle;
 }
 
 const displayTodoList = (todoListData) => {
@@ -56,10 +58,19 @@ const displayTodoTitles = (todoTitlesData) => {
 }
 
 const changeCheck = (ev) => {
-    console.log(ev);
-    ev.target.classList.toggle("isDo");
-    ev.target.classList.toggle("isNotDo");
+    classList = ev.target.classList;
+    classList.toggle("isDo");
+    classList.toggle("isNotDo");
+    const id = ev.target.parentNode.id;
+    fetchFromJson(`services/updateCheck.php?todoId=${id}`)
+    .then((x) => console.log(x));
+    fetchFromJson("services/getTodo.php")
+    .then((x) => console.log(x.result[0]));
 }
+
+
+
+
 
 "use strict";
   /*
