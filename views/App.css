@@ -104,10 +104,20 @@ html, body, .App {
 
 .todoItem {
     color: white;
-    padding: 5px 10px;
     margin-bottom: 3px;
     border: 1px solid #24262F;
     border-radius: 2px;
+}
+
+.todoItem::first-letter {
+    text-transform: uppercase;
+}
+
+.todoText {
+    padding: 5px 10px;
+    border: 1px solid #24262F;
+    border-radius: 2px;
+    color: white;
 }
 
 .todoInput {

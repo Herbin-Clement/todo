@@ -12,11 +12,12 @@ const createTodo = (todoData) => {
     let todoText = document.createElement('div');
     todoText.classList.add("todoText");
     if (todoData.isCheck == 0) {
-        todoItem.classList.add("isDo");
+        todoText.classList.add("isDo");
     } else {
-        todoItem.classList.add("isNotDo");
+        todoText.classList.add("isNotDo");
     }
     todoText.textContent = todoData.todo;
+    todoItem.addEventListener("click", changeCheck);
     todoItem.append(todoText);
     return todoItem;
 } 
@@ -52,6 +53,12 @@ const displayTodoTitles = (todoTitlesData) => {
         const title = createTodoTitle(todoTitle);
         sideBarTodoTitle.append(title);
     });
+}
+
+const changeCheck = (ev) => {
+    console.log(ev);
+    ev.target.classList.toggle("isDo");
+    ev.target.classList.toggle("isNotDo");
 }
 
 "use strict";
