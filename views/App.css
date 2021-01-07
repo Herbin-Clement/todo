@@ -114,8 +114,9 @@ html, body, .App {
 }
 
 .todoText {
+    width: 100%;
+    height: 100%;
     padding: 5px 10px;
-    border: 1px solid #24262F;
     border-radius: 2px;
     color: white;
 }

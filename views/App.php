@@ -34,9 +34,9 @@
                 <div class="todoTitle"></div>
                 <div class="todoList">
                 </div>
-                <form>
+                <form id="addTodo">
                     <div class="todoInput">
-                        <input type="text" placeholder="Enter a todo">
+                        <input class="todoTextToAdd" type="text" placeholder="Enter a todo">
                     </div>
                     <div class="buttonInput">
                         <button type="submit">Add Todo</button>
