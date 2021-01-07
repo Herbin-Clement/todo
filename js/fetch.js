@@ -85,12 +85,13 @@ const changeCheck = (ev) => {
 const addTodo = (ev) => {
     ev.preventDefault();
     const todoInput = document.querySelector('.todoInput');
-    const todoText = document.querySelector('.todoTextToAdd').value;
+    const todoText = document.querySelector('.todoTextToAdd');
+    const todoTextToAdd = todoText.value;
     const todosId = todoInput.getAttribute("todosId");
-    if (todoText != "") {
-        fetchFromJson(`services/addTodo.php?todosId=${todosId}&todoText=${todoText}`)
-        .then((x) => console.log(x));
-        getTodo();
+    if (todoTextToAdd != "") {
+        fetchFromJson(`services/addTodo.php?todosId=${todosId}&todoText=${todoTextToAdd}`)
+        .then(getTodo)
+        .then(() => todoText.value = "");
     }
 }
 
