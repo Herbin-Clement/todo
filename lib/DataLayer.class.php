@@ -45,4 +45,17 @@ class DataLayer {
         $stmt->execute();
         return [];
     }
+
+    function removeTodo(int $todoId) {
+        $sql = "delete from todo.todo where todo.todo.todoId=:todoId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindvalue(":todoId", $todoId);
+        $stmt->execute();
+        $sql = "select * from todo.todo where todo.todo.todoId=:todoId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindvalue(":todoId", $todoId);
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        return $res;
+    }
 } 

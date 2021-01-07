@@ -4,8 +4,8 @@ require_once('lib/common_service.php');
 require_once('lib/initDataLayer.php');
 
 try {
-    $check = $data->updateCheck($_GET["todoId"]);
-    produceResult($check);
+    $todo = $data->removeTodo($_GET["todoId"]);
+    produceResult($todo);
 }
 catch (PDOException $e){
     produceError($e->getMessage());

@@ -103,10 +103,11 @@ html, body, .App {
 }
 
 .todoItem {
-    color: white;
+    display: flex;
     margin-bottom: 3px;
     border: 1px solid #24262F;
     border-radius: 2px;
+    color: white;
 }
 
 .todoItem::first-letter {
@@ -114,11 +115,22 @@ html, body, .App {
 }
 
 .todoText {
-    width: 100%;
+    box-sizing: border-box;
+    width: 95%;
     height: 100%;
     padding: 5px 10px;
     border-radius: 2px;
     color: white;
+}
+
+.todoDelete {
+    box-sizing: border-box;
+    width: 5%;
+    height: 100%;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: white;
+    text-align: center;
 }
 
 .todoInput {

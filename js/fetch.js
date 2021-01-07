@@ -11,13 +11,20 @@ const createTodo = (todoData) => {
     let todoText = document.createElement('div');
     todoText.classList.add("todoText");
     if (todoData.isCheck == 1) {
-        todoText.classList.add("isDo");
+        todoItem.classList.add("isDo");
     } else {
-        todoText.classList.add("isNotDo");
+        todoItem.classList.add("isNotDo");
     }
     todoText.textContent = todoData.todo;
+
+    todoDelete = document.createElement('div');
+    todoDelete.classList.add('todoDelete')
+    todoDelete.textContent = 'X';
+    todoDelete.addEventListener('click', removeTodo);
+
     todoItem.addEventListener("click", changeCheck);
     todoItem.append(todoText);
+    todoItem.append(todoDelete);
     return todoItem;
 } 
 
@@ -59,14 +66,13 @@ const createTodoTitle = (todoTitleData) => {
 const displayTodoTitles = (todoTitlesData) => {
     const sideBarTodoTitle = document.querySelector('.sideBarTodoTitle');
     todoTitlesData.result.forEach((todoTitle) => {
-        console.log(todoTitle);
         const title = createTodoTitle(todoTitle);
         sideBarTodoTitle.append(title);
     });
 }
 
 const changeCheck = (ev) => {
-    classList = ev.target.classList;
+    classList = ev.target.parentNode.classList;
     classList.toggle("isDo");
     classList.toggle("isNotDo");
     const id = ev.target.parentNode.id;
@@ -86,6 +92,15 @@ const addTodo = (ev) => {
         .then((x) => console.log(x));
         getTodo();
     }
+}
+
+const removeTodo = (ev) => {
+    const parentNode = ev.target.parentNode;
+    const todoId = parentNode.id;
+    console.log(todoId);
+    fetchFromJson(`services/removeTodo.php?todoId=${todoId}`)
+    .then((x) => console.log(x));
+    ev.target.parentNode.remove();
 }
 
 "use strict";
