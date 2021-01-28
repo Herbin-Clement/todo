@@ -34,6 +34,7 @@ const displayTodoTitle = (todoTitle) => {
 }
 
 const displayTodoList = (todoListData) => {
+    console.log(todoListData);
     const todoInput = document.querySelector('.todoInput');
     const todoList = document.querySelector('.todoList');
     displayTodoTitle(todoListData.result[0].todosName);
@@ -90,7 +91,7 @@ const addTodo = (ev) => {
     const todosId = todoInput.getAttribute("todosId");
     if (todoTextToAdd != "") {
         fetchFromJson(`services/addTodo.php?todosId=${todosId}&todoText=${todoTextToAdd}`)
-        .then(getTodo)
+        .then(() => getTodo())
         .then(() => todoText.value = "");
     }
 }
